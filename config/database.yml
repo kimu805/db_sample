@@ -21,10 +21,12 @@ development:
   primary:
     <<: *default
     database: db_sample_development
-  sub:
+    port: 33061
+  primary_replica:
     <<: *default
-    database: db_sample_development_sub
-    migrations_paths: db/sub_migrate
+    database: db_sample_development
+    port: 33062
+    replica: true
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
