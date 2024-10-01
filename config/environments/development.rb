@@ -32,7 +32,10 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-
+  config.active_storage.service = :local
+  config.active_record.database_selector = { delay: 2.seconds }
+  config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
+  config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
